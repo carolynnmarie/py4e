@@ -9,7 +9,7 @@ def exampleDictionaries():
             "number" : "+1 734 303 4456"
         },
         "email" : {
-            "hide" : "yes" "
+            "hide" : "yes" 
         }
     }'''
 
@@ -34,3 +34,8 @@ def exampleList():
     print('User count:', len(info))
     for item in info:
         print('Attribute', item['x'])
+
+
+if __name__ == '__main__':
+   exampleDictionaries()
+
