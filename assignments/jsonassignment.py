@@ -3,13 +3,8 @@ import ssl
 import json
 
 def parseJson():
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
 
-    url = input('Enter location: ')
-    data = urllib.request.urlopen(url).read()
-
+    data = url()
     try:
         js = json.loads(data)
     except:
@@ -21,6 +16,14 @@ def parseJson():
         counts.append(int(item["count"]))
     total = sum(counts)
     print(total)
+
+def url():
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+
+    url = input('Enter location: ')
+    return urllib.request.urlopen(url).read()
 
 if __name__ == '__main__':
     parseJson()

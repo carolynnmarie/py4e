@@ -4,14 +4,8 @@ import ssl
 
 def scraping():
 
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
-
-    url = input('Enter - ')
-    html = urllib.request.urlopen(url).read()
-    soup = BeautifulSoup(html, 'html.parser')
-
+    ctx()
+    soup = url()
     count = []
     tags = soup('span')
     for tag in tags:
@@ -19,6 +13,16 @@ def scraping():
         count.append(val)
     total = sum(count)
     print(total)
+
+def ctx():
+    ctX = ssl.create_default_context()
+    ctX.check_hostname = False
+    ctX.verify_mode = ssl.CERT_NONE
+
+def url():
+    url = input('Enter - ')
+    html = urllib.request.urlopen(url).read()
+    return BeautifulSoup(html, 'html.parser')
 
 
 if __name__ == '__main__':

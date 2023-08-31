@@ -4,10 +4,7 @@ from bs4 import BeautifulSoup
 import ssl
 
 def urlLinks():
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
-
+    ctx()
     url = input('Enter URL: ')
     count = int(input('Enter count: '))
     position = int(input('Enter position: '))
@@ -31,7 +28,10 @@ def urlLinks():
         x = x + 1
     print(lastNames[count-1])
 
-
+def ctx():
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
 
 if __name__ == '__main__':
     urlLinks()
